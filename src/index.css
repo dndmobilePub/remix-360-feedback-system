@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-app: #f5f5f7;
+  --surface-app: #ffffff;
+  --input-app: #efeff4;
+  --accent-app: #da1550;
+  --text-app: #1d1d1f;
+  --text-sub-app: #86868b;
+  --border-app: rgba(0, 0, 0, 0.08);
+  --highlight-bg: rgba(0, 0, 0, 0.05);
+}
+.dark {
+  --bg-app: #000000;
+  --surface-app: #1c1c1e;
+  --input-app: #2c2c2e;
+  --text-app: #f5f5f7;
+  --text-sub-app: #a1a1aa;
+  --border-app: rgba(255, 255, 255, 0.1);
+  --highlight-bg: rgba(255, 255, 255, 0.1);
+}
+
+@theme inline {
+  --color-background-dark: var(--bg-app);
+  --color-surface-dark: var(--surface-app);
+  --color-input-dark: var(--input-app);
+  --color-accent: var(--accent-app);
+  --font-sans: "Inter", "Noto Sans KR", sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    font-family: "Inter", "Noto Sans KR", sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-app);
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
+    -o-transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+  button:not(:disabled),
+  summary,
+  select {
+    cursor: pointer;
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+}
+
+@utility text-theme-main {
+  color: var(--text-app);
+}
+@utility text-theme-sub {
+  color: var(--text-sub-app);
+}
+@utility border-theme {
+  border-color: var(--border-app);
+}
+@utility bg-theme-highlight {
+  background-color: var(--highlight-bg);
+}
+@utility no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 140, 150, 0.35) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(140, 140, 150, 0.3);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 140, 150, 0.55);
+}
+.dark .custom-scrollbar {
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+}
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-8px);
+    -o-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+}
+@keyframes highlight-reveal {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(4px) scale(0.98);
+    -o-transform: translateY(4px) scale(0.98);
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+}
+
+@utility animate-page {
+  -webkit-animation: page-in 0.3s ease-out both;
+  animation: page-in 0.3s ease-out both;
+}
+@utility animate-fade {
+  -webkit-animation: fade-in 0.3s ease-out both;
+  animation: fade-in 0.3s ease-out both;
+}
+@utility animate-zoom {
+  -webkit-animation: zoom-in 0.2s ease-out both;
+  animation: zoom-in 0.2s ease-out both;
+}
+@utility animate-slide {
+  -webkit-animation: slide-down 0.25s ease-out both;
+  animation: slide-down 0.25s ease-out both;
+}
+@utility animate-highlight {
+  animation: highlight-reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  display: inline-block;
+}
