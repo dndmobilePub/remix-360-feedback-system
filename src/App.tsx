@@ -46,7 +46,7 @@ function AppRoutes() {
   const [activeSession, setActiveSession] = useState<FeedbackSession | null>(null);
   const [selectedSession, setSelectedSession] = useState<FeedbackSession | null>(null);
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
-  const [selectedYear, setSelectedYear] = useState("2025");
+  const [selectedYear, setSelectedYear] = useState(String(new Date().getFullYear()));
   // 관리자 로그인 성공 시 비밀번호를 메모리에만 보관 (새로고침하면 로그아웃). 모든 관리자 RPC 호출에 사용
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");

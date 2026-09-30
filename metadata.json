@@ -1,0 +1,8 @@
+{
+  "name": "360º Feedback System",
+  "description": "360도 다면 평가 및 인사이트 피드백 수집·분석·관리 플랫폼",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "permissions": []
+}
